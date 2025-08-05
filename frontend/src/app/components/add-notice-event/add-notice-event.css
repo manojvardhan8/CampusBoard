@@ -1,0 +1,21 @@
+.selection_form{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+.notice_form{
+    width:275px;
+    text-align:center;
+    border:1px solid;
+}
+.event_form{
+    width:275px;
+    text-align: center;
+    border:1px solid;
+}
+.main{
+    margin-top: 10px;
+    display:flex;
+    flex-direction: column;
+    row-gap: 20px;
+}

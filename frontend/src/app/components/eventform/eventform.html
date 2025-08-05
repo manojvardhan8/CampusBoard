@@ -1,0 +1,44 @@
+<div class="outer" >
+    <form [formGroup]="form" class="form" (ngSubmit)="save()">
+        <h1 class="heading">Event Form</h1>
+    <label for ="title">Title : </label>
+    <mat-form-field appearance="fill" id="title">
+    <mat-label>Enter title</mat-label>
+    <input class="text" matInput placeholder="Title" formControlName="title">
+    </mat-form-field><br>
+    Description :
+    <mat-form-field appearance="fill">
+    <mat-label>Enter description</mat-label>
+    <textarea matInput placeholder="content" rows='4' formControlName="description"></textarea>
+    </mat-form-field>
+    <br>
+    Event Date : 
+    <mat-form-field appearance="fill">
+      <mat-label>Select Event date</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="eventDate">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <br>
+    <label for ="title">location : </label>
+    <mat-form-field appearance="fill" id="location">
+    <mat-label>Enter location</mat-label>
+    <input class="text" matInput placeholder="location" formControlName="location">
+    </mat-form-field>
+    
+    <!-- Category : 
+   <mat-form-field appearance="fill" >
+  <mat-label>Select an option</mat-label>
+  <mat-select formControlName="category">
+    <mat-option value="academics">Academics</mat-option>
+    <mat-option value="sports">Sports</mat-option>
+    <mat-option value="cultures">Cultures</mat-option>
+  </mat-select>
+</mat-form-field>
+ <br> -->
+    <button mat-raised-button color="primary" type="submit" [disabled]="!form.valid">Submit</button>
+</form>
+
+</div>
+
+

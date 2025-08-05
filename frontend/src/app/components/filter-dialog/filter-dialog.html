@@ -1,0 +1,18 @@
+<h2 mat-dialog-title>Filter Notices</h2>
+<mat-dialog-content>
+  <mat-form-field appearance="fill" class="w-full my-2">
+    <mat-label>Category</mat-label>
+    <mat-select [(value)]="selectedCategory">
+      <mat-option value="all">All</mat-option>
+      <mat-option value="academics">Academics</mat-option>
+      <mat-option value="sports">Sports</mat-option>
+      <mat-option value="culturals">Culturals</mat-option>
+    </mat-select>
+  </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="clearFilter()">Clear</button>
+  <button mat-button color="primary" (click)="applyFilter()">Apply</button>
+</mat-dialog-actions>
+

@@ -1,0 +1,29 @@
+
+<div>
+    <div *ngIf="!nloading()">
+        <div class="header" routerLink="/notices">Notices</div>
+        <div class="notice_cards">
+            <div *ngFor="let notice of notices">
+
+                <app-noticecard  [notice]="notice" ></app-noticecard>
+            </div>
+        </div>
+        <p *ngIf="!notices?.length">
+            No notices are posted.
+        </p>
+    </div>
+    <div *ngIf="!eloading()">
+        <div class="header" routerLink="/events">Events</div>
+        <div class="notice_cards">
+            <div *ngFor="let event of events">
+                <app-eventcard [event]="event"></app-eventcard>
+            </div>
+        </div>
+        <p *ngIf="!events?.length">
+            No events are posted.
+        </p>
+    </div>
+
+    
+</div>
+

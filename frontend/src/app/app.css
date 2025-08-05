@@ -1,0 +1,27 @@
+.board_header {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;            
+  padding: 20px;
+  background-color: #007bff;
+  border-bottom: 1px solid #ccc;
+}
+
+.board_header h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.header-buttons button {
+  margin-left: 10px;
+  padding: 8px 16px;
+  font-size: 16px;
+  background-color: #eee;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.header-buttons button:hover {
+  background-color: #ddd;
+}

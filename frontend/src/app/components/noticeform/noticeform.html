@@ -1,0 +1,30 @@
+<div class="outer" >
+    <form [formGroup]="form" class="form" (ngSubmit)="save()">
+        <h1 class="heading">NoticeForm</h1>
+    <label for ="title">Title : </label>
+    <mat-form-field appearance="fill" id="title">
+    <mat-label>Enter title</mat-label>
+    <input class="text" matInput placeholder="Title" formControlName="title">
+    </mat-form-field><br>
+    Content :
+    <mat-form-field appearance="fill">
+    <mat-label>Enter content</mat-label>
+    <textarea matInput placeholder="content" rows='4' formControlName="content"></textarea>
+    </mat-form-field>
+    <br>
+    Category : 
+   <mat-form-field appearance="fill" >
+  <mat-label>Select an option</mat-label>
+  <mat-select formControlName="category">
+    <mat-option value="academics">Academics</mat-option>
+    <mat-option value="sports">Sports</mat-option>
+    <mat-option value="culturals">Culturals</mat-option>
+  </mat-select>
+</mat-form-field>
+ <br>
+    <button mat-raised-button color="primary" type="submit" [disabled]="!form.valid">Submit</button>
+</form>
+
+</div>
+
+

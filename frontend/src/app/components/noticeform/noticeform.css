@@ -1,0 +1,25 @@
+.form{
+    margin:0 auto;
+    height:100%;
+    width:500px;
+    border:1px solid;
+    border-radius: 10px;
+    padding:30px;
+    display:flex;
+    flex-direction: column;
+}
+.outer{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+.heading{
+    text-align:center;
+}
+.text{
+    width:100%;
+}
+.textarea{
+    height:50px;
+    width:100%;
+}

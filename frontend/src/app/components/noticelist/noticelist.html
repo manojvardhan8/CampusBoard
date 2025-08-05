@@ -1,0 +1,26 @@
+<div class ="noticelist-container">
+    <div class="filter">
+        <div>
+             <mat-form-field>
+                <mat-label>Search Notices</mat-label>
+                <input matInput (keyup)="searchNotices($event.target)" placeholder="Search by title">
+            </mat-form-field>
+        </div>
+        <div *ngIf="!dialog()">
+            <button mat-raised-button color="primary" (click)="openDialog()">Filter</button>
+        </div>
+   
+    </div>
+    
+       
+  
+<div class="notice-cards" *ngIf="!loading()">
+    <app-noticecard *ngFor="let notice of filteredNotices" [notice]="notice"></app-noticecard>
+    {{filteredNotices.length === 0 ? 'No notices available' : ''}}
+</div>
+<mat-paginator [length]="100"
+              [pageSize]="10"
+              [pageSizeOptions]="[5, 10, 25, 100]"
+              aria-label="Select page">
+</mat-paginator>
+</div>

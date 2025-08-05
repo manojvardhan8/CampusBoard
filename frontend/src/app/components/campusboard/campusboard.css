@@ -1,0 +1,23 @@
+
+
+.notice_cards{
+    display: flex;
+    flex-wrap:wrap;
+    gap: 20px;         /* spacing between cards */
+    
+    justify-content: left;
+    margin: 16px;
+}
+.header{
+    height: 50px;
+    background-color: blue;
+    color: white;
+    font-size: 30px;
+    text-align: center;
+    
+    display: flex;
+    align-items: center;     /* vertically center the text */
+    justify-content: center; /* horizontally center (optional redundancy) */
+
+    padding: 0 16px; 
+}

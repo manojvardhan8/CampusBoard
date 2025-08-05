@@ -1,0 +1,14 @@
+<div class="board_header">
+  <h1>Welcome to our CampusBoard</h1>
+  <div *ngIf="!loggedIn" class="header-buttons">
+    <button routerLink="/login">Login</button>
+    <button routerLink="/signup">Signup</button>
+  </div>
+  <div *ngIf="loggedIn" class="header-buttons">
+    <button (click)="logout()">Logout</button>
+    <button *ngIf="isAdmin" routerLink="/add">Add</button>
+  </div>
+</div>
+  <router-outlet></router-outlet>
+
+  

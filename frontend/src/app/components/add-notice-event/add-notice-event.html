@@ -1,0 +1,20 @@
+<div class ="main">
+  <div>
+    <div *ngIf="selection" class="selection_form">
+    <div class="notice_form" style="background-color: blue;"><h4>Notice Form</h4></div>
+    <div (click)="toggle()"class="event_form"><h4>Event Form</h4></div>
+    </div>
+    <div *ngIf="!selection" class="selection_form">
+      <div class="notice_form" (click)="toggle()"><h4>Notice Form</h4></div>
+      <div style="background-color: blue;"class="event_form"><h4>Event Form</h4></div>
+    </div>
+  </div>
+  <div *ngIf="selection">
+    <app-noticeform></app-noticeform>
+  </div>
+  <div *ngIf="!selection">
+    <app-eventform></app-eventform>
+  </div>
+  
+</div>
+  
