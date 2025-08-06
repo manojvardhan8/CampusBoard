@@ -31,7 +31,7 @@ export class Campusboard implements OnInit{
         }
       });
       this.eloading.set(true);
-      this.eventService.fetchEvents().pipe(finalize(()=>{this.eloading.set(false)})).subscribe({
+      this.eventService.fetchRecentEvents().pipe(finalize(()=>{this.eloading.set(false)})).subscribe({
         next: (data)=>{
           this.events = data;
         },

@@ -1,4 +1,5 @@
-<h2 mat-dialog-title>Filter Notices</h2>
+<div *ngIf="selection==='notice'">
+  <h2 mat-dialog-title>Filter Notices</h2>
 <mat-dialog-content>
   <mat-form-field appearance="fill" class="w-full my-2">
     <mat-label>Category</mat-label>
@@ -13,6 +14,27 @@
 
 <mat-dialog-actions align="end">
   <button mat-button (click)="clearFilter()">Clear</button>
-  <button mat-button color="primary" (click)="applyFilter()">Apply</button>
+  <button mat-button cdkFocusInitial (click)="applyFilter()">Apply</button>
 </mat-dialog-actions>
+
+</div>
+<div *ngIf="selection==='event'">
+  <h2 mat-dialog-title>Filter Events</h2>
+<mat-dialog-content>
+  <mat-form-field appearance="fill" class="w-full my-2">
+    <mat-label>Registration</mat-label>
+    <mat-select [(value)]="selectedRegistration">
+      <mat-option value="all">all</mat-option>
+      <mat-option value="registered">Registered</mat-option>
+      <mat-option value="not registered">Not Registered</mat-option>
+    </mat-select>
+  </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="clearFilter()">Clear</button>
+  <button mat-button cdkFocusInitial (click)="applyFilter()">Apply</button>
+</mat-dialog-actions>
+</div>
+
 

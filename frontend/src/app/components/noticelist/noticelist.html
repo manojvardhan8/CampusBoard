@@ -15,12 +15,14 @@
        
   
 <div class="notice-cards" *ngIf="!loading()">
-    <app-noticecard *ngFor="let notice of filteredNotices" [notice]="notice"></app-noticecard>
+    <app-noticecard *ngFor="let notice of NoticesPerPage" [notice]="notice"></app-noticecard>
     {{filteredNotices.length === 0 ? 'No notices available' : ''}}
 </div>
-<mat-paginator [length]="100"
-              [pageSize]="10"
-              [pageSizeOptions]="[5, 10, 25, 100]"
+<div *ngIf="loading()">loading</div>
+<mat-paginator [length]="totalNotices"
+              [pageSize]="pageSize"
+              [pageSizeOptions]="[9,18,36,64,81]"
+              (page)="onPageChange($event)"
               aria-label="Select page">
 </mat-paginator>
 </div>

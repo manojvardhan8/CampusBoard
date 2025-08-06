@@ -18,7 +18,15 @@ export class AuthService {
     this.loggedIn.next(true);
     this.isAdmin.next(user.role === 'admin');
   }
-
+  getToken(){
+    let token = localStorage.getItem('token')
+    if(token === null) {
+      return false
+    }else return true;
+  }
+  getUser(){
+    return localStorage.getItem('user');
+  }
   logout(): void {
     localStorage.removeItem('token');
     localStorage.removeItem('role');

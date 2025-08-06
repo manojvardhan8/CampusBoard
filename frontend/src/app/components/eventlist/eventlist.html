@@ -7,7 +7,7 @@
             </mat-form-field>
         </div>
         <div *ngIf="!dialog()">
-            <button mat-raised-button color="primary">Filter</button>
+            <button mat-raised-button (click)="openDialog()" color="primary">Filter</button>
         </div>
    
     </div>
@@ -15,12 +15,13 @@
        
   
 <div class="notice-cards" *ngIf="!loading()">
-    <app-eventcard *ngFor="let event of filteredEvents" [event]="event"></app-eventcard>
+    <app-eventcard *ngFor="let event of eventsPerPage" [event]="event"></app-eventcard>
     {{filteredEvents.length === 0 ? 'No notices available' : ''}}
 </div>
-<mat-paginator [length]="100"
-              [pageSize]="10"
-              [pageSizeOptions]="[5, 10, 25, 100]"
+<mat-paginator [length]="totalEvents"
+              [pageSize]="pagesize"
+              [pageSizeOptions]="[9,18,36,63,81]"
+              (page)="OnPageChange($event)"
               aria-label="Select page">
 </mat-paginator>
 </div>

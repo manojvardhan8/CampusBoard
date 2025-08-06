@@ -11,14 +11,14 @@ import { AuthService } from '../../services/auth-service';
   styleUrl: './login.css'
 })
 export class Login {
-  loginForm!: FormGroup;
 
   constructor(private http: HttpClient,private router:Router,private route:ActivatedRoute,private authService:AuthService) {}
-
-  ngOnInit(): void {
-    this.loginForm = new FormGroup({
+  loginForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', Validators.required)});
+  ngOnInit(): void {
+    const isLoogedIn = this.authService.getToken()
+    if(isLoogedIn) this.router.navigate([''])
   }
 
   onSubmit(): void {

@@ -1,4 +1,4 @@
-<div class="eventcard">
+<div class="eventcard" [routerLink]="['/events',event._id]">
     <h3>Title : {{event.title}}</h3>
     <div>
         Description : {{event.description}}

@@ -17,7 +17,6 @@ export const createEvent = async (req: Request, res: Response) => {
 export const getEvents = async (req: Request, res: Response) => {
   try {
     const events = await Event.find();
-    console.log(events);
     res.json(events);
     //res.send(events);
   } catch (err) {
@@ -32,12 +31,33 @@ export const getRecentEvents= async(req: Request,res:Response) =>{
         date: -1
       }
     },{
-      $limit:4
+      $limit:3
     }])
-    res.json(recentEvents);
+    res.status(200).json(recentEvents);
   }
   catch(err){
     console.log("something wrong");
     res.status(500).json({error:"cannot retrieve 4 documens"});
   }
+}
+export const getEventbyId = async (req : Request,res : Response)=> {
+
+ try{
+   const eventId = req.params.id;
+
+   if(eventId === undefined) return res.status(500).json({error : 'event id requried'})
+
+    const event = await Event.findById(eventId)
+    console.log(event)
+    res.status(200).json({
+      event
+    })
+
+ }catch(e){
+  console.log(e)
+  throw(e)
+ }
+
+
+
 }

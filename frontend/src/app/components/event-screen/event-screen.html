@@ -1,1 +1,16 @@
-<p>event-screen works!</p>
+<div class="outer" *ngIf="!loading()">
+    <div class ="title"><h1>{{event.title}}</h1>
+    </div>
+    <button *ngIf="!isRegistered()" class="register-btn" (click)="register()">Register</button>
+    <div *ngIf="isRegistered()" class="register-btn">AlreadyRegistered</div>
+    <div>
+        <small>No.of registrations:{{event.registeredUsers.length}}</small>
+    </div>
+    <br><br>
+    <div class="Description">
+       {{event.description}}
+    </div><br>
+    <div class="date">
+        EventDate:{{event.date}}
+    </div>
+</div>

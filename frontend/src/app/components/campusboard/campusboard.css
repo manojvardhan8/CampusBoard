@@ -3,9 +3,9 @@
 .notice_cards{
     display: flex;
     flex-wrap:wrap;
-    gap: 20px;         /* spacing between cards */
+    gap: 20px;         
     
-    justify-content: left;
+    justify-content: center;
     margin: 16px;
 }
 .header{
@@ -16,8 +16,8 @@
     text-align: center;
     
     display: flex;
-    align-items: center;     /* vertically center the text */
-    justify-content: center; /* horizontally center (optional redundancy) */
+    align-items: center;     
+    justify-content: center; 
 
     padding: 0 16px; 
 }

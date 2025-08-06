@@ -29,7 +29,7 @@ export const getRecentNotices = async (req: Request,res :Response)=>{
         createdAt: -1
       }
     },{
-      $limit : 4
+      $limit : 3
     }])
     res.json(recentNotices);
   }
@@ -39,6 +39,9 @@ export const getRecentNotices = async (req: Request,res :Response)=>{
 }
 // export const getNoticesForPagination = async (req:Request,res:Response)=>{
 //   try{
+//     const page  = req.qurey.page
+//     const limit = req.query.limit
+//.    const offset =  
 //     const notices=await notice.aggregate([{
 
 //     }])

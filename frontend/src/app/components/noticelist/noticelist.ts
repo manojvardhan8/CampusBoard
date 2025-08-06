@@ -10,7 +10,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDialog } from '@angular/material/dialog';
 import { FilterDialog } from '../filter-dialog/filter-dialog';
 import { sign } from 'node:crypto';
-import { MatPaginator } from '@angular/material/paginator';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-noticelist',
@@ -21,8 +21,10 @@ import { MatPaginator } from '@angular/material/paginator';
 export class Noticelist implements OnInit{
   notices: any[] = [];
   filteredNotices: any[] = [];
-  
-
+  NoticesPerPage:any[] = [];
+  totalNotices=0;
+  pageSize=9;
+  currentPage=0;
   constructor(public noticesService: Notices,public dialogBox:MatDialog) {}
   filterTitle: string = '';
   filterCategory: string = "all"; 
@@ -33,21 +35,34 @@ export class Noticelist implements OnInit{
       this.noticesService.fetchNotices().pipe(finalize(()=>{this.loading.set(false)})).subscribe({
         next: (data)=>{
           this.notices=data;
-          this.filteredNotices=data;
+          this.filteredNotices=[...this.notices];
+          this.totalNotices=this.filteredNotices.length;
+          this.updatePagination();
         },
         error:(err)=>{
           console.log(err);
         }
       })
   }
+  updatePagination(){
+    const start=this.currentPage*this.pageSize;
+    const end=start+this.pageSize;
+    this.NoticesPerPage=this.filteredNotices.slice(start,end);
+  }
+  onPageChange(event: PageEvent) {
+    this.pageSize = event.pageSize;
+    this.currentPage = event.pageIndex;
+    this.updatePagination();
+  }
   openDialog(){
     const dialogRef = this.dialogBox.open(FilterDialog, {
       width: '400px',
-      data: { category: this.filterCategory }
+      data: { category: this.filterCategory,selection:"notice" }
     });
     this.dialog.set(true);
     dialogRef.afterClosed().pipe(finalize(()=>{this.dialog.set(false)})).subscribe(result => {
       if (result) {
+        console.log(result);
         this.filterCategory = result.category;
         console.log('Dialog result:', this.filterCategory);
         const temp=this.notices.filter(notice => 
@@ -59,6 +74,9 @@ export class Noticelist implements OnInit{
         if(this.filteredNotices.length==0){
           this.filteredNotices=this.notices;
         }
+        this.totalNotices = this.filteredNotices.length;
+        this.currentPage = 0; // Reset to first page
+        this.updatePagination();
       }
     });
   }
@@ -67,5 +85,8 @@ export class Noticelist implements OnInit{
     this.filteredNotices = this.notices.filter(notice => 
       notice.title.toLowerCase().startsWith(this.filterTitle)
     );
+    this.totalNotices = this.filteredNotices.length;
+  this.currentPage = 0; 
+  this.updatePagination();
   }
 }
